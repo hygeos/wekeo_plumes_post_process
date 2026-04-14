@@ -216,7 +216,7 @@ def plot_plume_maps(
 
 def plot_plume_detection_results(
     ds: xr.Dataset,
-    figures_dir: str | Path | None = None,
+    save_fig_dir: str | Path | None = None,
     var_name: str = "mean_nb_detect",
     kernel_str: str = "elliptique",
     structure_str: str = "structure_8",
@@ -281,16 +281,16 @@ def plot_plume_detection_results(
     height, width = labels_final.shape
     
     # Generate all plots
-    plot_binary_image(image, figures_dir)
+    plot_binary_image(image, save_fig_dir)
     
     plot_colored_labels(
         labels_final, height, width, date_str,
         kernel_str, structure_str, min_plume_size,
-        small_group_offset, figures_dir
+        small_group_offset, save_fig_dir
     )
     
     plot_plume_maps(
         labels_final, lat_grid, lon_grid, image,
         date_str, var_name, ellipt_size, min_plume_size,
-        small_group_offset, figures_dir
+        small_group_offset, save_fig_dir
     )
